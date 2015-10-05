@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 
 The following **bonus** features are implemented:
 
-* [] Compose tweet functionality is build using modal overlay
+* [ ] Compose tweet functionality is build using modal overlay
 
 ## Video Walkthrough 
 
