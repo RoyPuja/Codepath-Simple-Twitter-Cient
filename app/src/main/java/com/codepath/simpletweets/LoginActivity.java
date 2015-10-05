@@ -43,6 +43,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
     // i.e Display an error dialog or toast
     @Override
     public void onLoginFailure(Exception e) {
+        Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         e.printStackTrace();
     }
 

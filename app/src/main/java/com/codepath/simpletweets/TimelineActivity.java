@@ -43,16 +43,7 @@ public class TimelineActivity extends AppCompatActivity implements PostTweetDial
         aTweets=new TweetsArrayAdapter(this,tweets);
         lvTweets.setAdapter(aTweets);
         user=new User();
-        /*lvTweets.setOnScrollListener(new EndlessScrollListener() {
-            @Override
-            public boolean onLoadMore(int page, int totalItemsCount) {
-                // Triggered only when new data needs to be appended to the list
-                // Add whatever code is needed to append new items to your AdapterView
-                customLoadMoreDataFromApi(page);
-                // or customLoadMoreDataFromApi(totalItemsCount);
-                return true; // ONLY if more data is actually being loaded; false otherwise.
-            }
-        });*/
+
         client=TwitterApplication.getRestClient();//singleton client.
         getUserProfile();
 

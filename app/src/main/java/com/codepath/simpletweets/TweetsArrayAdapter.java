@@ -69,7 +69,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweets> implements View.OnC
         {
             viewHolder = (ViewHolder)convertView.getTag();
         }
-        viewHolder.tvUserName.setText(tweet.getUser().getScreenName());
+        viewHolder.tvUserName.setText(tweet.getUser().getName());
         viewHolder.tvBody.setText(tweet.getBody());
         viewHolder.tvTimestamp.setText(ParseRelativeDate.getRelativetimeAgo(tweet.getCreatedAt()));
         viewHolder.ivUserImage.setImageResource(android.R.color.transparent);//clear out the image for a recycled view
@@ -78,7 +78,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweets> implements View.OnC
         viewHolder.tvRetweetCount.setOnClickListener(this);
         viewHolder.tvFavoriteCount.setText(String.valueOf(tweet.favoriteCount));
         viewHolder.tvFavoriteCount.setTag(position);
-        viewHolder.tvUserHandler.setText(tweet.getUser().screenName);
+        viewHolder.tvUserHandler.setText("@"+tweet.getUser().screenName);
         viewHolder.tvFavoriteCount.setOnClickListener(this);
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(viewHolder.ivUserImage);
         viewHolder.ivUserImage.setTag(position);

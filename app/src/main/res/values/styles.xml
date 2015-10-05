@@ -26,10 +26,13 @@
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
 
-    <style name="Theme.CustomDialog" parent="@android:style/Theme.Translucent.NoTitleBar">
+    <style name="Theme.CustomDialog" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
+
+
+
     </style>
 
 </resources>
