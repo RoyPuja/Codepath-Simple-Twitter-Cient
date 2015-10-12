@@ -2,7 +2,7 @@
 
 **Simple Twitter Client** is an android app that allows a user to view his Twitter timeline and post a new tweet. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
-Time spent: **X** hours spent in total
+Time spent: **11** hours spent in total
 
 ## User Stories
 
@@ -22,51 +22,23 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 * [ ] User can **see a counter with total number of characters left for tweet** on compose tweet page
-* [ ] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
-* [ ] User can **pull down to refresh tweets timeline**
-* [ ] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
-* [ ] User can tap a tweet to **open a detailed tweet view**
-* [ ] User can **select "reply" from detail view to respond to a tweet**
-* [ ] Improve the user interface and theme the app to feel "twitter branded"
 
 The following **bonus** features are implemented:
 
-* [ ] User can see embedded image media within the tweet detail view
 * [ ] Compose tweet functionality is build using modal overlay
-
-The following **additional** features are implemented:
-
-* [ ] List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://cloud.githubusercontent.com/assets/11285573/10272476/c6e94b60-6ad4-11e5-8927-75949ca0246e.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://cloud.githubusercontent.com/assets/11285573/10272560/8b5755ea-6ad6-11e5-93fe-f586dcfbb55a.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Picasso](http://square.github.io/picasso/) - Image loading and caching library for Android
 
-## License
 
-    Copyright [yyyy] [name of copyright owner]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
