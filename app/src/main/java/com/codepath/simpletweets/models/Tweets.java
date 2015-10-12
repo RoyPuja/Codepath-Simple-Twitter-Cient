@@ -7,6 +7,8 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
+import com.codepath.simpletweets.enums.TweetType;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,25 +88,31 @@ public class Tweets extends Model implements Parcelable{
             e.printStackTrace();
         }
     }
-    public static ArrayList<Tweets> fromJSONArray(JSONArray jsonArray) {
+    public static ArrayList<Tweets> fromJSONArray(JSONArray jsonArray,int type) {
        ArrayList<Tweets> tweets=new ArrayList<>();
 
         for(int i=0;i<jsonArray.length();i++) {
+            JSONObject tweetJSON=null;
             try {
 
-                JSONObject tweetJSON = jsonArray.getJSONObject(i);
-                Tweets tweet=new Tweets(tweetJSON);
-                if(tweet!=null){
-                    tweets.add(tweet);
+                 tweetJSON = jsonArray.getJSONObject(i);
 
-                }
+               // if(tweet!=null){
+                 //   tweets.add(tweet);
+
+                //}
 
             }catch(JSONException e){
                 e.printStackTrace();
                 continue;
             }
+            Tweets tweet=new Tweets(tweetJSON);
+            tweet.isMention = type == TweetType.MENTIONS.ordinal() ? 1 : 0;
+            tweet.save();
+            tweets.add(tweet);
 
         }
+
         return tweets;
 
     }
@@ -131,7 +139,7 @@ public class Tweets extends Model implements Parcelable{
         dest.writeInt(favorited ? 1 : 0);
 
     }
-  /*  public static List<Tweets> getAll(int type) {
+    public static List<Tweets> getAll(int type) {
         if (type == TweetType.MENTIONS.ordinal()) {
             return new Select()
                     .from(Tweets.class)
@@ -181,7 +189,7 @@ public class Tweets extends Model implements Parcelable{
         retweetCount = in.readInt();
         favoriteCount = in.readInt();
         favorited = in.readInt() == 1;
-    }*/
+    }
 }
 
 

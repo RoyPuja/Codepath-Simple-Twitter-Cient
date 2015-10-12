@@ -7,7 +7,9 @@ import org.scribe.builder.api.TwitterApi;
 import android.content.Context;
 
 import com.codepath.oauth.OAuthBaseClient;
+import com.codepath.simpletweets.enums.TweetType;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 /*
@@ -57,11 +59,28 @@ public class TwitterClient extends OAuthBaseClient {
         // *    i.e client.post(apiUrl, params, handler);
         getClient().get(apiURL, params, handler);
     }
-
-    public void getUserProfile(AsyncHttpResponseHandler handler) {
-        String apiUrl = getApiUrl("account/verify_credentials.json");
+    public void getMentionsTimeline(int page, AsyncHttpResponseHandler handler) {
+        // 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint
+        // 	  i.e getApiUrl("statuses/home_timeline.json");
+        String apiURL = getApiUrl("statuses/mentions_timeline.json");
+        // * 2. Define the parameters to pass to the request (query or body)
+        // *    i.e RequestParams params = new RequestParams("foo", "bar");
         RequestParams params = new RequestParams();
-        params.put("skip_status", 1);
+        params.put("page", String.valueOf(page));
+        params.put("count", 25);
+        // * 3. Define the request method and make a call to the client
+        // *    i.e client.get(apiUrl, params, handler);
+        // *    i.e client.post(apiUrl, params, handler);
+        getClient().get(apiURL, params, handler);
+
+    }
+
+    public void getUserTimeline(int page, String userId, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/user_timeline.json");
+        RequestParams params = new RequestParams();
+        params.put("page", String.valueOf(page));
+        params.put("count", 25);
+        params.put("user_id", userId);
         getClient().get(apiUrl, params, handler);
     }
 
@@ -78,10 +97,36 @@ public class TwitterClient extends OAuthBaseClient {
         getClient().post(apiUrl, params, handler);
     }
 
-    public void getTimeline(int page, int type, String userId, AsyncHttpResponseHandler handler) {
-
-        getHomeTimeline(page, handler);
+    public void postRetweet(String tweetId, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/retweet/" + tweetId + ".json");
+        RequestParams params = new RequestParams();
+        getClient().post(apiUrl,params, handler);
     }
+
+    public void postFavoriteTweet(String tweetId, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("favorites/create.json");
+        RequestParams params = new RequestParams();
+        params.put("id", tweetId);
+        getClient().post(apiUrl, params, handler);
+    }
+
+    public void getUserProfile(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("account/verify_credentials.json");
+        RequestParams params = new RequestParams();
+        params.put("skip_status", 1);
+        getClient().get(apiUrl, params, handler);
+    }
+
+    public void getTimeline(int page, int type, String userId, AsyncHttpResponseHandler handler) {
+        if (type == TweetType.HOME.ordinal()) {
+            getHomeTimeline(page, handler);
+        } else if (type == TweetType.MENTIONS.ordinal()) {
+            getMentionsTimeline(page, handler);
+        } else if (type == TweetType.USER.ordinal()) {
+            getUserTimeline(page, userId, handler);
+        }
+    }
+
 
 
 }

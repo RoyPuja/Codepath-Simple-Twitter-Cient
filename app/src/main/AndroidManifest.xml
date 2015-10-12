@@ -26,7 +26,7 @@
             android:value="1" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -46,8 +46,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TimelineActivity"
+            android:name=".activities.TimelineActivity"
             android:label="@string/title_activity_timeline" >
+        </activity>
+        <activity
+            android:name=".activities.DetailActivity"
+            android:label="@string/title_activity_tweet_detail"
+            android:parentActivityName=".activities.TimelineActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.TimelineActivity"/>
+        </activity>
+        <activity android:name=".activities.UserProfileActivity"
+            android:label="@string/UserProfileActivity"
+            android:parentActivityName=".activities.TimelineActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.TimelineActivity"/>
         </activity>
     </application>
 

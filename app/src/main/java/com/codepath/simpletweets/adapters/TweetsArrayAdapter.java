@@ -1,4 +1,4 @@
-package com.codepath.simpletweets;
+package com.codepath.simpletweets.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.codepath.simpletweets.R;
 import com.codepath.simpletweets.helper.ParseRelativeDate;
 
 import com.codepath.simpletweets.models.Tweets;
@@ -40,8 +42,9 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweets> implements View.OnC
 
     }
 
-    public TweetsArrayAdapter(Context context,List<Tweets> tweets){
-        super(context,0,tweets);
+    public TweetsArrayAdapter(Context context, List<Tweets> tweets, TweetsAdapterListener listener){
+        super(context,android.R.layout.simple_list_item_1,tweets);
+        this.listener=listener;
 
     }
 
